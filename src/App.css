@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #5e6369 !important;
 }
 
 .App-logo {
@@ -36,3 +37,25 @@
     transform: rotate(360deg);
   }
 }
+
+.table-container {
+  margin: 20px;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container th,
+.table-container td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table-container th {
+  background-color: #f2f2f2;
+}
+
+
