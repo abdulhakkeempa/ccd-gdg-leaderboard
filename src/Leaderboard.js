@@ -5,14 +5,25 @@ const Leaderboard = () => {
   const [leaderboardData, setLeaderboardData] = useState([]);
 
   useEffect(() => {
-    // Fetch leaderboard data from the API
-    fetch(process.env.REACT_APP_GOOGLE_SHEET_API)
-      .then((response) => response.json())
-      .then((data) => setLeaderboardData(data))
-      .catch((error) => console.log(error));
+    const fetchData = async () => {
+      try {
+        const response = await fetch(process.env.REACT_APP_GOOGLE_SHEET_API);
+        const data = await response.json();
+        setLeaderboardData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    // Fetch data initially
+    fetchData();
+
+    // Schedule regular API calls every 5 minutes (300000 milliseconds)
+    const interval = setInterval(fetchData, 30000);
+  
+    // Clean up the interval on component unmount
+    return () => clearInterval(interval);
   }, []);
 
-  console.log(process.env.REACT_APP_GOOGLE_SHEET_API)
 
   // Assign levels to each key
   // Access the environment variable and assign levels to each key
@@ -23,10 +34,10 @@ const Leaderboard = () => {
       return [key, parseInt(value)];
     })
   );
-
+  console.log(levels);
   // Sort the leaderboardData array based on the level assigned to each key in descending order
   leaderboardData.sort((a, b) => levels[b.Key] - levels[a.Key]);
-
+  console.log(leaderboardData);
   return (
     <div>
       <div className="agenda-hero-title">
