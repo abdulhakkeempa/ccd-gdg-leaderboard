@@ -22,3 +22,10 @@ Engages and motivates participants during the CTF game.
 Provides an easy way for participants to track their progress.
 Encourages competition and collaboration.
 Simplifies key submission for a smooth user experience.
+
+<strong>Conclusion</strong>  
+Please note that API access for this project is currently disabled in the production to prioritize the privacy of the event and its participants.
+
+
+
+
